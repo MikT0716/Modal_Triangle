@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        * {
+            box-sizing: border-box;
+
+        }
+
+        body {
+            margin: 0 auto;
+        }
+
+        .modal{
+            display: none;
+            position: fixed;
+            left:0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            z-index: 10;
+        }
+
+        .modal-content{
+            position: relative;
+            margin: 2.5em auto;
+            width: 40%;
+            animation: animacio .5s linear;
+        }
+
+        #modalimage {
+            display: block;
+            width: 100%;
+            height: 85vh;
+            object-fit: cover;
+        }
+
+        .close{
+            position: absolute;
+            float: right;
+            top: .5em;
+            right: .5em;
+            font-size: 28px;
+            font-weight: bold;
+            background-color: red;
+            color: black;
+            padding: .5em;
+            z-index: 2;
+        }
+
+        .close:hover,
+        .close:focus{
+            cursor: pointer;
+            transform: scale(1.2);
+            transition-duration: .5s;
+        }
+
+        
+        #gallery {
+            background-color: antiquewhite;
+        }
+
+        .galleryelement{
+            display: inline-block;
+            border: 1px solid lightgray;
+            margin: .8em .2em;
+            width: 15em;
+            background-color: rgb(249, 250, 253);
+        }
+
+        .galleryelement:hover{
+            border: 1px solid gray;
+        }
+
+        .galleryelement:hover img{
+            filter:none;
+        }
+
+        .galleryelement img{
+            width: 100%;
+            height: 14em;
+            border: 1px solid lightgray;
+            filter: grayscale();
+        }
+
+        .imagedescription{
+            text-align: center;
+            padding: 15px;
+        }
+
+        @keyframes animacio {
+            0% {transform: scale(0);}
+            100% {transform: scale(1);}
+        }
+
+        /*-------------------DIVIDER-------------------------- */
+
+        .divider {
+            height: 2em;
+            background-color: lightgray;
+        }
+
+        .divider p {
+            position: absolute;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            margin: .4em 0;
+            letter-spacing: 3em;
+            font-size: large;
+            font-weight: 600;
+        }
+
+        .subdivider1, .subdivider2, .subdivider3 {
+            display: inline-block;
+            position: absolute;
+            width: 2em;
+            height: 2em;
+        }
+
+        .subdivider1 {
+            animation: subdivider1 5s infinite linear;
+            animation-delay: 2s;
+        }
+        .subdivider2 {
+            animation: subdivider2 4.5s infinite linear;
+        }
+        .subdivider3 {
+            animation: subdivider3 4s infinite linear;
+            animation-delay: 1s;
+        }
+
+        @keyframes subdivider1 {
+            0% {background-color: lightgrey; right: 100%;}
+            50% {background-color: gray; right: 50%;}
+            100% {background-color: lightgrey; right: 0em}
+        }
+
+        @keyframes subdivider2 {
+            0% {background-color: lightgrey; right: 100%;}
+            50% {background-color: gray; right: 50%;}
+            100% {background-color: lightgrey; right: 0em}
+        }
+
+        @keyframes subdivider3 {
+            0% {background-color: lightgrey; right: 100%;}
+            50% {background-color: gray; right: 50%;}
+            100% {background-color: lightgrey; right: 0em}
+        }
+
+
+        /*-------------------TRIANGLE-------------------------- */
+
+        #triangle {
+            padding: 1.3em;
+            height: 14em;
+            background-color: rgb(196, 235, 255);
+        }
+
+        #triangle div {
+            margin: 1em;
+        }
+
+        #triangle input {
+            width: 11%;
+        }
+
+        #reset {
+            visibility: hidden;
+            cursor: pointer;
+            background-color: aquamarine;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+
+<!------------------------MODAL GALLERY------------------------------>
+
+    <div id="gallery">
+        <div class="galleryelement">
+            <a href="#" class="imgmodal">
+                <img src="owl.jpg">
+            </a>
+            <div class="imagedescription">leiras</div>
+        </div>
+        
+        <div class="galleryelement">
+            <a href="#" class="imgmodal">
+                <img src="owl.jpg">
+            </a>
+            <div class="imagedescription">leiras</div>
+        </div>
+        
+        <div class="galleryelement">
+            <a href="#" class="imgmodal">
+                <img src="flower_repeatable2.jpg">
+            </a>
+            <div class="imagedescription">leiras</div>
+        </div>
+        
+        <div class="galleryelement">
+            <a href="#" class="imgmodal">
+                <img src="owl.jpg">
+            </a>
+            <div class="imagedescription">leiras</div>
+        </div>        
+    </div>    
+        
+    <!-- modal ablak-->
+    <div class="modal" id="mutat">
+        <!-- modal tartalom-->
+        <div class="modal-content">
+            <span class="close">X</span>
+            <img src="" id="modalimage">
+        </div>
+    </div>
+
+<!----------------------DIVIDER------------------------------------->
+    <div class="divider">
+        <p>ANIMÁCIÓ PÉLDA</p>
+        <div class="subdivider1"></div>
+        <div class="subdivider2"></div>
+        <div class="subdivider3"></div>
+    </div>
+
+<!------------------------TRIANGLE------------------------------>
+    <div id="triangle">
+        <form action="">
+        <div>
+            <label for="a">A oldal
+                <input id="a" placeholder="Kérem írja be az a oldal értékét" />
+            </label>
+        </div>
+        <div>
+            <label for="b">B oldal
+                <input id="b"  placeholder="Kérem írja be a b oldal értékét" />
+            </label>
+        </div>
+        <div>
+            <label for="c">C oldal
+                <input id="c"  placeholder="Kérem írja be a c oldal értékét" />
+            </label>
+        </div>
+        <div>
+            <button id="calc">Kiszámol</button>
+        </form>
+            <button id="reset">Reset</button>
+        </div>
+        <div id="area"></div>
+    </div>
+
+<script src="triangle.js"></script>
+<script>
+    var imgmodals   = document.getElementsByClassName('imgmodal');
+    var close      = document.getElementsByClassName('close');
+    console.log(imgmodals);
+    for(var i=0; i< imgmodals.length; i++){
+        imgmodals[i].addEventListener('click', function(){
+            console.log(this.childNodes[1].src);
+            document.getElementById('modalimage').src = this.childNodes[1].src;
+            document.getElementById("mutat").style.display = "block";
+        });
+    }
+
+    for(var j=0; j< close.length; j++){
+        close[j].addEventListener('click', function(){
+            document.getElementById("mutat").style.display = "none";
+        });
+    }
+
+
+</script>
+</body>
+</html>
