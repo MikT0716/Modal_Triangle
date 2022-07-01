@@ -158,8 +158,10 @@
         /*-------------------TRIANGLE-------------------------- */
 
         #triangle {
-            padding: 1.3em;
-            height: 14em;
+            position: relative;
+            height: 15.2em;
+            width: 100%;
+            padding: 2em 1em;
             background-color: rgb(196, 235, 255);
         }
 
@@ -168,17 +170,43 @@
         }
 
         #triangle input {
+            position: relative;
+            z-index: 10;
             width: 15%;
         }
 
         #reset {
+            position: relative;
+            z-index: 10;
             visibility: hidden;
             cursor: pointer;
             background-color: aquamarine;
         }
 
         button {
+            position: relative;
+            z-index: 10;
             cursor: pointer;
+        }
+
+        label, #area {
+            position: relative;
+            z-index: 10;
+            font-size: large;
+        }
+
+        #triangleleft {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgb(166, 255, 181);
+            width: 40%;
+            height: 15em;
+            margin: 0 !important;
+            border-top-right-radius: 50%;
+            border-bottom-right-radius: 50%;
+            z-index: 0;
+            box-shadow: .1em .2em;
         }
 
     </style>
@@ -236,7 +264,6 @@
 
 <!------------------------TRIANGLE------------------------------>
     <div id="triangle">
-        <form action="">
         <div>
             <label for="a">A oldal
                 <input id="a" type="number" placeholder="Kérem írja be az a oldal értékét" />
@@ -254,10 +281,10 @@
         </div>
         <div>
             <button type="button" id="calc">Kiszámol</button>
-        </form>
             <button type="button" id="reset">Reset</button>
+            <div id="area"></div>
         </div>
-        <div id="area"></div>
+        <div id="triangleleft"></div>
     </div>
 
 <script src="triangle.js"></script>
