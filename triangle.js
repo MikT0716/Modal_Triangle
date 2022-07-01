@@ -6,12 +6,8 @@ document.getElementById("calc").addEventListener("click", function () {
   var c = parseInt(document.getElementById("c").value);
   var s = (a + b + c) / 2;
   var area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
-  console.log(a);
-  if (a + b > c && a + c > b && b + c > a) {
-    document.getElementById("area").innerHTML =
-      "<b>" + area.toFixed(3) + "</b>";
-    reset.style.visibility = "visible";
-  } else {
+
+  if (a + b <= c || a + c <= b || b + c <= a) {
     document.getElementById("calc").innerHTML =
       "A &#9651 nem szerkeszthető meg";
     document.getElementById("area").innerHTML = "";
@@ -22,6 +18,10 @@ document.getElementById("calc").addEventListener("click", function () {
     document.getElementById("b").disabled = true;
     document.getElementById("c").style.cursor = "not-allowed";
     document.getElementById("c").disabled = true;
+    reset.style.visibility = "visible";
+  } else {
+    document.getElementById("area").innerHTML =
+      "<b>" + area.toFixed(3) + "</b>";
     reset.style.visibility = "visible";
   }
 });
