@@ -306,6 +306,12 @@
         });
     }
 
+    document.getElementById("mutat").addEventListener("click", function(){
+        if (!event.target.matches("#modalimage")){
+            document.getElementById("mutat").style.display = "none";
+        }
+    })
+
 
 </script>
 </body>
